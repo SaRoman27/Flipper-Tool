@@ -1,0 +1,26 @@
+import machine
+import time
+
+# Define the GPIO pin for the relay
+relay_pin = machine.Pin(2, machine.Pin.OUT)
+
+# Function to turn the light on
+def light_on():
+    relay_pin.value(1)
+    print("Light is ON")
+
+# Function to turn the light off
+def light_off():
+    relay_pin.value(0)
+    print("Light is OFF")
+
+# Main loop to toggle the light
+while True:
+    command = input("Enter 'on' to turn the light on, 'off' to turn it off: ").strip().lower()
+    if command == 'on':
+        light_on()
+    elif command == 'off':
+        light_off()
+    else:
+        print("Invalid command. Please enter 'on' or 'off'.")
+    time.sleep(1)
